@@ -1,10 +1,14 @@
-<div class="row">
+ 
+<div class="row" >
 <div *ngFor="let school of school" class="card" style="width: 18rem;">
   <img [src]="school.logo" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Thông tin Trường học</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Tên : {{school.name}}</p>
+      <p class="card-text">Địa chỉ  : {{school.address}}</p>
+       <p class="card-text">Hiệu Trưởng: {{school.president}}</p>
+       <p class="card-text">Thành Phố : {{school.province}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-</div>
+ </div>
