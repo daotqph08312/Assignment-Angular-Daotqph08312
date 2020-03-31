@@ -11,7 +11,7 @@ import { ClassComponentComponent } from './class-component/class-component.compo
 import { SchoolComponentComponent } from './school-component/school-component.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,
+  imports:      [ BrowserModule, FormsModule ,HttpClientModule,
    RouterModule.forRoot([
      {path:'', component:SchoolComponentComponent},
      {path: 'class/id', component:ClassComponentComponent}
