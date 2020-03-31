@@ -1,8 +1,8 @@
 export class School {
-id:number;
+id: Number;
 name: String;
 logo : String;
 address: String;
 president: String;
-province:String;
+province: String;
 }
