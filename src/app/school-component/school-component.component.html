@@ -1,6 +1,6 @@
  
  <div class="row">
-<div *ngFor="let school of school" class="card border-info mb-3" style="width: 540px;margin:10px 40px;">
+<div *ngFor="let school of school" class="card border-info mb-3" style="width: 400px;margin:10px 40px;">
  <div class="card-header">Trường Học {{school.id}}</div>
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -13,10 +13,42 @@
     <li class="list-group-item">Địa chỉ  : {{school.address}}</li>
     <li class="list-group-item">Hiệu Trưởng: {{school.president}}</li>
     <li class="list-group-item">Thành Phố : {{school.province}}</li>
-    <li class="list-group-item"><a  style="margin-right:10px;"  class="btn btn-success" routerLink='../addSchool'>Thêm</a>&emsp;<a  style="margin-right:10px;"  class="btn btn-warning">Sửa</a>&emsp;<a  class="btn btn-danger">Xóa</a> </li>
+    <li class="list-group-item">
+     
+      &emsp;
+      <a style="margin-right:10px;"  class="btn btn-warning">Sửa</a>
+      &emsp;<a  class="btn btn-danger">Xóa</a> </li>
   </ul>
       </div>
     </div>
   </div>
 </div>
 </div>
+	<div class="container">
+								<h2 class="text-center"> Thông tin danh lam thắng cảnh</h2>
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col"></th>
+											<th scope="col">Tên </th>
+											<th scope="col">Địa chỉ</th>
+											<th scope="col">Hiệu Trưởng</th>
+											<th scope="col">Thành Phố</th>
+											<th scope="col">Sửa</th>
+											<th scope="col">Xóa</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let school of school">
+											<th scope="row"><img [src]="school.logo" class="card-img" alt="..."></th>
+											<td>{{school.name}}</td>
+											<td> {{school.address}}</td>
+											<td>{{school.president}}</td>
+											<td>{{school.province}}</td>
+											<td> <button type="button"  class="btn btn-warning">Sửa</button></td>
+											<td><button type="button"  name="" id="" class="btn btn-danger">Xóa</button></td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>

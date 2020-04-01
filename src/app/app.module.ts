@@ -20,10 +20,15 @@ import { TopbarComponent } from './topbar/topbar.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,
    RouterModule.forRoot([
-     {path:'dashboard', component:SchoolComponentComponent},
-     {path: 'class/id', component:ClassComponentComponent},
-      {path: '', component:DashboardComponent},
-      {path: 'addSchool', component:SchoolFormComponent}
+  
+    
+      {path: '', component:DashboardComponent, 
+      children: [
+      ]
+      },
+       {path: 'class/id', component:ClassComponentComponent},
+      {path:'dashboard', component:SchoolComponentComponent},
+         {path: 'addSchool', component:SchoolFormComponent},
     ])
   ],
   
