@@ -1,31 +1,6 @@
- 
- <div class="row">
-<div *ngFor="let school of school" class="card border-info mb-3" style="width: 400px;margin:10px 40px;">
- <div class="card-header">Trường Học {{school.id}}</div>
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img [src]="school.logo" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-      <ul class="list-group list-group-flush">
-    <li class="list-group-item">Tên : {{school.name}}</li>
-    <li class="list-group-item">Địa chỉ  : {{school.address}}</li>
-    <li class="list-group-item">Hiệu Trưởng: {{school.president}}</li>
-    <li class="list-group-item">Thành Phố : {{school.province}}</li>
-    <li class="list-group-item">
-     
-      &emsp;
-      <a style="margin-right:10px;"  class="btn btn-warning">Sửa</a>
-      &emsp;<a  class="btn btn-danger">Xóa</a> </li>
-  </ul>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+
 	<div class="container">
-								<h2 class="text-center"> Thông tin danh lam thắng cảnh</h2>
+								<h2 class="text-center"> Thông tin trường học</h2>
 								<table class="table">
 									<thead class="thead-dark">
 										<tr>
