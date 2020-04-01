@@ -14,9 +14,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,
    RouterModule.forRoot([
-     {path:'', component:SchoolComponentComponent},
+     {path:'dashboard', component:SchoolComponentComponent},
      {path: 'class/id', component:ClassComponentComponent},
-      {path: 'dashboard', component:DashboardComponent}
+      {path: '', component:DashboardComponent}
     ])
   ],
   
