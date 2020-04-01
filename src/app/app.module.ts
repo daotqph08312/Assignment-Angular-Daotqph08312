@@ -9,17 +9,18 @@ import { SchollService } from './scholl.service';
 import { ClassService } from './class.service';
 import { ClassComponentComponent } from './class-component/class-component.component';
 import { SchoolComponentComponent } from './school-component/school-component.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,
    RouterModule.forRoot([
      {path:'', component:SchoolComponentComponent},
-     {path: 'class/id', component:ClassComponentComponent}
-      
+     {path: 'class/id', component:ClassComponentComponent},
+      {path: 'dashboard', component:DashboardComponent}
     ])
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService]
 })
