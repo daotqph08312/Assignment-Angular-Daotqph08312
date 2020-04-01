@@ -17,7 +17,8 @@ import { SchoolFormComponent } from './school-form/school-form.component';
    RouterModule.forRoot([
      {path:'dashboard', component:SchoolComponentComponent},
      {path: 'class/id', component:ClassComponentComponent},
-      {path: '', component:DashboardComponent}
+      {path: '', component:DashboardComponent},
+      {path: 'addSchool', component:SchoolFormComponent}
     ])
   ],
   
