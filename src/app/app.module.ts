@@ -10,6 +10,7 @@ import { ClassService } from './class.service';
 import { ClassComponentComponent } from './class-component/class-component.component';
 import { SchoolComponentComponent } from './school-component/school-component.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SchoolFormComponent } from './school-form/school-form.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,
@@ -20,7 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ])
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService]
 })
