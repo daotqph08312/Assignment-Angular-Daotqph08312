@@ -12,6 +12,10 @@ import { SchoolComponentComponent } from './school-component/school-component.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchoolFormComponent } from './school-form/school-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { TopbarComponent } from './topbar/topbar.component';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,
@@ -23,7 +27,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ])
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent,  ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService]
 })
