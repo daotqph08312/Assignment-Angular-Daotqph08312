@@ -11,9 +11,10 @@ import { ClassComponentComponent } from './class-component/class-component.compo
 import { SchoolComponentComponent } from './school-component/school-component.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchoolFormComponent } from './school-form/school-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule,
+  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,
    RouterModule.forRoot([
      {path:'dashboard', component:SchoolComponentComponent},
      {path: 'class/id', component:ClassComponentComponent},
