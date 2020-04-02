@@ -18,6 +18,8 @@ export class SchoolFormComponent implements OnInit {
     province: new FormControl('')
 
   })
+  id:Number = null;
+  image:String = null;
   constructor( private route: Router,
                 private activate : ActivatedRoute,
                 private schoolService: SchollService
@@ -29,9 +31,12 @@ export class SchoolFormComponent implements OnInit {
         if(schoolsID != null){
           this.schoolService.getListSchoolbyId(schoolsID).subscribe(data =>{
               this.newSchool.setValue(data);
+             this.id = schoolsID;
+             this.showImage();
           })
         }
     });
+
   }
   SaveSchool(){
     if(this.newSchool.value.id != null){
@@ -45,12 +50,17 @@ export class SchoolFormComponent implements OnInit {
     }
   
   }
-    RemoveSchool(id){
-      console.log(id);
-    // this.schoolService.deleteSchool(id).subscribe(data =>{
-    
-    // this.route.navigate(['dashboard']);
-    // });
+    RemoveSchool(){
+    this.schoolService.deleteSchool(this.id).subscribe(data =>{
+    this.route.navigate(['dashboard']);
+    });
+  }
+  showImage(){
+         if(this.id != null){
+            this.schoolService.getListSchoolbyId(this.id).subscribe(data =>{
+             this.image = data.logo;
+          })
+         }
   }
 
 }

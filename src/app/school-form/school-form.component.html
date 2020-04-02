@@ -41,9 +41,9 @@
 											<br>
 
 											<button (click) = 'SaveSchool()' style="margin-top:7px" class="btn btn-info">Lưu và Hiển Thị</button> 
-                      		<button type="button" style="margin-top:7px; margin-left:30px" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+                      		<button *ngIf="id != null" type="button" style="margin-top:7px; margin-left:30px" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
                           <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalLabel" aria-hidden="false">
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -57,17 +57,18 @@
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-												<button type="button" (click)="RemoveSchool(school.id)" class="btn btn-danger">Xóa</button>
+												<button type="button" (click)="RemoveSchool(id)" data-dismiss="modal" class="btn btn-danger">Xóa</button>
 											</div>
 										</div>
 									</div>
 								</div>
 										</div>
 									</div>
-									<div class="col-sm-5 col-md-3">
-										<img style="margin-top:30px; margin-left:20px" src="https://s3.amazonaws.com/uifaces/faces/twitter/vitor376/128.jpg">
-      </div>
+									<div *ngIf="this.image != null" class="col-sm-5 col-md-3">
+										<img style="margin-top:30px; margin-left:20px" [src]="this.image">
+                   </div>
 									</div>
 								</div>
+             
 	</form>
 </div>
