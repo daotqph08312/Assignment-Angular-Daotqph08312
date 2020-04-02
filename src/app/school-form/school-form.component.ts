@@ -41,18 +41,18 @@ export class SchoolFormComponent implements OnInit {
   SaveSchool(){
     if(this.newSchool.value.id != null){
       this.schoolService.updateSchool(this.newSchool.value).subscribe(data =>{
-      this.route.navigate(['dashboard']);
+      this.route.navigate(['home/dashboard']);
     });
     }else{
   this.schoolService.addSchool(this.newSchool.value).subscribe(data =>{
-      this.route.navigate(['dashboard']);
+      this.route.navigate(['home/dashboard']);
     });
     }
   
   }
     RemoveSchool(){
     this.schoolService.deleteSchool(this.id).subscribe(data =>{
-    this.route.navigate(['dashboard']);
+    this.route.navigate(['home/dashboard']);
     });
   }
   showImage(){

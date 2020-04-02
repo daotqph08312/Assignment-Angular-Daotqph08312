@@ -17,22 +17,27 @@ import { FooterComponent } from './footer/footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule } from '@angular/forms';
-
+import { LoginComponent } from './login/login.component';
+import { IndexComponent } from './index/index.component';
+const layout = [
+  {path: 'home', component:DashboardComponent
+  , children: [
+     {path:'dashboard', component:SchoolComponentComponent},
+      {path: 'editSchool/:id', component:SchoolFormComponent},
+      {path: 'addSchool', component:SchoolFormComponent}, 
+      {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
+      {path: 'index', component:IndexComponent}, 
+  ]
+  },
+  {path: '', component:LoginComponent}
+  
+]
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,ReactiveFormsModule,
-   RouterModule.forRoot([
-      
-      {path: '', component:DashboardComponent},
-       {path: 'class/id', component:ClassComponentComponent},
-      {path:'dashboard', component:SchoolComponentComponent},
-       {path: 'editSchool/:id', component:SchoolFormComponent},
-        {path: 'addSchool', component:SchoolFormComponent}, 
-         {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
-         
-    ])
+   RouterModule.forRoot(layout)
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent,  ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent,  ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService]
 })
