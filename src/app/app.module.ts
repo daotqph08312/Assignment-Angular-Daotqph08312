@@ -31,6 +31,7 @@ import {ReactiveFormsModule } from '@angular/forms';
       {path:'dashboard', component:SchoolComponentComponent},
        {path: 'editSchool/:id', component:SchoolFormComponent},
         {path: 'addSchool', component:SchoolFormComponent}, 
+         {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
          
     ])
   ],

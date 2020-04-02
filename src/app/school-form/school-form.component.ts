@@ -45,5 +45,12 @@ export class SchoolFormComponent implements OnInit {
     }
   
   }
+    RemoveSchool(id){
+      console.log(id);
+    // this.schoolService.deleteSchool(id).subscribe(data =>{
+    
+    // this.route.navigate(['dashboard']);
+    // });
+  }
 
 }

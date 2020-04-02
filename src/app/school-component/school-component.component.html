@@ -12,7 +12,7 @@
 	<div class="card shadow-sm mb-12">
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h6 class="m-0 font-weight-bold text-primary">Thông tin trường học</h6>
-      <li> <a routerLink="../addSchool" class="btn btn-info">Thêm Trường Học</a></li>
+			<li> <a routerLink="../addSchool" class="btn btn-info">Thêm Trường Học</a></li>
 		</div>
 		<div class="table-responsive">
 
@@ -35,18 +35,16 @@
 						<tr *ngFor="let school of school">
 							<th scope="row"> <a
 									href="index.html"><img [src]="school.logo" class="card-img" alt="..."></a></th>
-							<td>{{school.name}}</td>
+							<td>{{school.name}} </td>
 							<td> {{school.address}}</td>
 							<td>{{school.president}}</td>
 							<td>{{school.province}}</td>
 
-							<td> <a [routerLink]="['../editSchool',school.id]" class="btn btn-warning">Sửa</a></td>
-							<td><button type="button"  name="" id="" class="btn btn-danger">Xóa</button></td>
-
+							<td> <a [routerLink]="['../editSchool',school.id]" class="btn btn-warning">Sửa</a></td>					
 						</tr>
 
 					</tbody>
-          	<tfoot class="tfoot-dark">
+					<tfoot class="tfoot-dark">
 						<tr>
 							<th scope="col"></th>
 							<th scope="col">Tên </th>
