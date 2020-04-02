@@ -9,15 +9,29 @@ import {User} from '../user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+      message = null;
+     username= new FormControl('')
+     password= new FormControl('');
 
   constructor(
     private route: Router,
      private activateRoute:ActivatedRoute,
-     private user:User,
      private UserService:UserService
   ) {  }
 
   ngOnInit() {
   }
-
+  login(){
+      this.UserService.login(this.username.value).subscribe(data =>{
+            if(this.username.value == data.username && this.password.value == data.password){
+              console.log('success');
+              this.route.navigate(['home/index']);
+            }else{
+              this.message = 'Tài Khoản Hoặc Mật Khẩu không đúng';
+               this.route.navigate(['']);
+               
+            }
+      });
+      
+  }
 }

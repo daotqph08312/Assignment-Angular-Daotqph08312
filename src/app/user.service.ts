@@ -9,6 +9,6 @@ export class UserService {
   constructor( private http : HttpClient) { }
   login(Username): Observable<User>{
     let url = `${UserAPI}/${Username}`;
-    return this.http.get<User>(url);
+    return this.http.get<User>(url, Username);
   }
 }
