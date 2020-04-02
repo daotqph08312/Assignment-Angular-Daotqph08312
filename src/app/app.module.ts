@@ -21,11 +21,8 @@ import {ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,ReactiveFormsModule,
    RouterModule.forRoot([
-  
-    
-      {path: '', component:DashboardComponent, 
       
-      },
+      {path: '', component:DashboardComponent},
        {path: 'class/id', component:ClassComponentComponent},
       {path:'dashboard', component:SchoolComponentComponent},
        {path: 'editSchool/:id', component:SchoolFormComponent},
