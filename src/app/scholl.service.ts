@@ -20,4 +20,8 @@ export class SchollService {
     let url = `${schoolAPI}/${id}`;
     return this.http.get<any>(url);
   }
+  deleteSchool(id): Observable<any>{
+    let url = `${schoolAPI}/${id}`;
+    return this.http.delete<any>(url);
+  }
 }

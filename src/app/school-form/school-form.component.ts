@@ -28,7 +28,6 @@ export class SchoolFormComponent implements OnInit {
         let schoolsID = params.get('id');
         if(schoolsID != null){
           this.schoolService.getListSchoolbyId(schoolsID).subscribe(data =>{
-              
               this.newSchool.setValue(data);
           })
         }
