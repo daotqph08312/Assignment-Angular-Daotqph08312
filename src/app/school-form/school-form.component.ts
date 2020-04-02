@@ -25,8 +25,8 @@ export class SchoolFormComponent implements OnInit {
 
   ngOnInit() {
   }
-  SaveHotel(){
-    this.schoolService.addSchool(newSchool).subscribe(data =>{
+  SaveSchool(){
+    this.schoolService.addSchool(this.newSchool.value).subscribe(data =>{
       this.route.navigate(['dashboard']);
     });
   }
