@@ -28,21 +28,23 @@ export class SchoolFormComponent implements OnInit {
         let schoolsID = params.get('id');
         if(schoolsID != null){
           this.schoolService.getListSchoolbyId(schoolsID).subscribe(data =>{
-              console.log(data);
+              
               this.newSchool.setValue(data);
           })
         }
     });
   }
   SaveSchool(){
-    if(this.newSchool.id != null){
+    if(this.newSchool.value.id != null){
       this.schoolService.updateSchool(this.newSchool.value).subscribe(data =>{
       this.route.navigate(['dashboard']);
     });
-    }
-    this.schoolService.addSchool(this.newSchool.value).subscribe(data =>{
+    }else{
+  this.schoolService.addSchool(this.newSchool.value).subscribe(data =>{
       this.route.navigate(['dashboard']);
     });
+    }
+  
   }
 
 }
