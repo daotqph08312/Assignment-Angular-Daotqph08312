@@ -9,4 +9,7 @@ export class SchollService {
   getListSchools(): Observable<any>{
       return this.http.get<any>(schoolAPI);
   };
+  addSchool(object): Observable<any>{
+    return this.http.post<any>(schoolAPI,object);
+  }
 }

@@ -1,33 +1,53 @@
-<div class="table-responsive">
-	<div class="container">
-								<h2 class="text-center"> Thông tin trường học</h2>
-								<table class="table">
-									<thead class="thead-dark">
-										<tr>
-											<th scope="col"></th>
-											<th scope="col">Tên </th>
-											<th scope="col">Địa chỉ</th>
-											<th scope="col">Hiệu Trưởng</th>
-											<th scope="col">Thành Phố</th>
-											<th scope="col"></th>
-											<th scope="col"></th>
-                      <th scope="col"></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr *ngFor="let school of school">
-											<th scope="row"> <a href="index.html"><img [src]="school.logo" class="card-img" alt="..."></a></th>
-											<td>{{school.name}}</td>
-											<td> {{school.address}}</td>
-											<td>{{school.president}}</td>
-											<td>{{school.province}}</td>
-                      
-											<td> <a routerLink="../addSchool"  class="btn btn-warning">Sửa</a></td>
-											<td><button type="button"  name="" id="" class="btn btn-danger">Xóa</button></td>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<h1 class="h3 mb-0 text-gray-800">Thông tin trường học</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="./">Trang chủ</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page">Trường Học</li>
 
-										</tr>
+	</ol>
+</div>
+<div class="row">
+	<div class="card shadow-sm mb-12">
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary">Thông tin trường học</h6>
+      <li> <a routerLink="../addSchool" class="btn btn-info">Thêm Trường Học</a></li>
+		</div>
+		<div class="table-responsive">
 
-									</tbody>
-								</table>
-							</div>
+			<div class="container">
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">Tên </th>
+							<th scope="col">Địa chỉ</th>
+							<th scope="col">Hiệu Trưởng</th>
+							<th scope="col">Thành Phố</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let school of school">
+							<th scope="row"> <a
+									href="index.html"><img [src]="school.logo" class="card-img" alt="..."></a></th>
+							<td>{{school.name}}</td>
+							<td> {{school.address}}</td>
+							<td>{{school.president}}</td>
+							<td>{{school.province}}</td>
+
+							<td> <a routerLink="../addSchool" class="btn btn-warning">Sửa</a></td>
+							<td><button type="button"  name="" id="" class="btn btn-danger">Xóa</button></td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
