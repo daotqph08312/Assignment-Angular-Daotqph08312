@@ -40,7 +40,7 @@
 							<td>{{school.president}}</td>
 							<td>{{school.province}}</td>
 
-							<td> <a routerLink="../addSchool" class="btn btn-warning">Sửa</a></td>
+							<td> <a [routerLink]="['../editSchool',school.id]" class="btn btn-warning">Sửa</a></td>
 							<td><button type="button"  name="" id="" class="btn btn-danger">Xóa</button></td>
 
 						</tr>

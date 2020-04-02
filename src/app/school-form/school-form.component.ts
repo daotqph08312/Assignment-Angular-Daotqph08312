@@ -24,8 +24,22 @@ export class SchoolFormComponent implements OnInit {
                 ) { }
 
   ngOnInit() {
+    this.activate.paramMap.subscribe( params =>{
+        let schoolsID = params.get('id');
+        if(schoolsID != null){
+          this.schoolService.getListSchoolbyId(schoolsID).subscribe(data =>{
+              console.log(data);
+              this.newSchool.setValue(data);
+          })
+        }
+    });
   }
   SaveSchool(){
+    if(this.newSchool.id != null){
+      this.schoolService.updateSchool(this.newSchool.value).subscribe(data =>{
+      this.route.navigate(['dashboard']);
+    });
+    }
     this.schoolService.addSchool(this.newSchool.value).subscribe(data =>{
       this.route.navigate(['dashboard']);
     });

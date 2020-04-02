@@ -12,4 +12,12 @@ export class SchollService {
   addSchool(object): Observable<any>{
     return this.http.post<any>(schoolAPI,object);
   }
+  updateSchool(object): Observable<any>{
+    let url = `${schoolAPI}/${object.id}`;
+    return this.http.put<any>(url,object);
+  }
+     getListSchoolbyId(id): Observable<any>{
+    let url = `${schoolAPI}/${id}`;
+    return this.http.get<any>(url);
+  }
 }
