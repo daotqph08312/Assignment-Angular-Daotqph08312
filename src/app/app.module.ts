@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
+import { UserService } from './user.service';
 const layout = [
   {path: 'home', component:DashboardComponent
   , children: [
@@ -39,6 +40,6 @@ const layout = [
   
   declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent,  ],
   bootstrap:    [ AppComponent ],
-  providers: [SchollService, ClassService]
+  providers: [SchollService, ClassService, UserService]
 })
 export class AppModule { }
