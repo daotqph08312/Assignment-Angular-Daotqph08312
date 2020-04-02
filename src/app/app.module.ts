@@ -16,10 +16,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,
+  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,ReactiveFormsModule,
    RouterModule.forRoot([
   
     
