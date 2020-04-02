@@ -24,8 +24,7 @@ import {ReactiveFormsModule } from '@angular/forms';
   
     
       {path: '', component:DashboardComponent, 
-      children: [
-      ]
+      
       },
        {path: 'class/id', component:ClassComponentComponent},
       {path:'dashboard', component:SchoolComponentComponent},
