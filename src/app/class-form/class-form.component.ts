@@ -39,15 +39,17 @@ export class ClassFormComponent implements OnInit {
                   this.school = data;
                   
       });
-      this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
-           this.image = data.logo;
-                   console.log(data);
-      });
+   
 this.activate.paramMap.subscribe(data =>{
       this.idClass = parseInt(data.get('idclass'));
       this.idSchool = parseInt(data.get('idschool'));
       this.classService.getClassByID(this.idSchool,this.idClass).subscribe(data=>{
         this.newclass.setValue(data);
+      });
+
+         this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
+           this.image = data.logo;
+                   console.log(data);
       });
     });
   }
