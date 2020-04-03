@@ -19,7 +19,9 @@ export class ClassComponentComponent implements OnInit {
   ) {
   this.activate.paramMap.subscribe(data =>{
      this.schoolID = data.get('id');
-     console.log(this.schoolID);
+      this.classService.getlistClass(this.schoolID).subscribe(data =>{
+        console.log(data);
+      });
   });
   }
 

@@ -33,7 +33,7 @@
 					</thead>
 					<tbody>
 						<tr *ngFor="let school of school">
-							<th scope="row"> <a routerLink="['../class',school.id]"
+							<th scope="row"> <a [routerLink]="['../class/',school.id]"
 									><img [src]="school.logo" class="img-thumbnail" width="128" height="128" alt="..."></a></th>
 							<td>{{school.name}} </td>
 							<td> {{school.address}}</td>
