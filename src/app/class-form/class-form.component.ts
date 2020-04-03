@@ -37,7 +37,11 @@ export class ClassFormComponent implements OnInit {
     
       this.schoolService.getListSchools().subscribe(data=>{
                   this.school = data;
-                   this.image = data.logo;
+                  
+      });
+      this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
+           this.image = data.logo;
+                   console.log(data);
       });
 this.activate.paramMap.subscribe(data =>{
       this.idClass = parseInt(data.get('idclass'));
