@@ -1,16 +1,16 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+ <div class="d-sm-flex align-items-center justify-content-between mb-4">
 	<h1 class="h3 mb-0 text-gray-800">Quản lý trường học</h1>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
 		<li class="breadcrumb-item active" aria-current="page">Quản lý lớp học</li>
 	</ol>
-</div>
+</div> 
 
 <div class="card shadow-sm mb-4">
 	<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		<h6 class="m-0 font-weight-bold text-primary">Thêm & Sửa & Xóa lớp Học</h6>
 	</div>
-	<form [formGroup]='newSchool'>
+	<form [formGroup]='newclass'>
 		<div class="card-body">
 			<div class="row">
 				<div class="col-sm-5 col-md-3">
@@ -20,33 +20,33 @@
           </div>
 						<div class="form-group">
 							<label for="">Mã số Phòng</label>
-							<input class="form-control" formControlName='logo' value="">
+							<input class="form-control" formControlName='roomNumber' value="">
           </div>
 							<div class="form-group">
 								<label for="">Tổng Sinh Viên</label>
-								<input class="form-control" formControlName='address' value="">
+								<input class="form-control" formControlName='totalStudent' value="">
           </div>
 							</div>
 
 							<div class="col-sm-5 col-md-3">
 								<div class="form-group">
 									<label for="">Giáo Viên Chủ Nhiệm</label>
-									<input class="form-control" formControlName='president' value="">
+									<input class="form-control" formControlName='mainTeacher' value="">
           </div>
 									<div style="margin-top:48px" class="input-group mb-3">
   <div  class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Mã trường</label>
   </div>
   <select class="custom-select" id="inputGroupSelect01">
-    <!-- <option selected>Choose...</option> -->
-    <option *ngFor= 'let school of school' [value]="s">One</option>
+
+    <option *ngFor= 'let school of school' [value]='school.i' [formControl] = 'idSchools' >{{school.name}}</option>
    
   </select>
 </div>
 										<div class="form-group">
 											<br>
 
-											<button (click) = 'SaveSchool()' style="margin-top:7px"   class="btn btn-info">Lưu và Hiển Thị</button>
+											<button (click) = 'SaveClass()' style="margin-top:7px"   class="btn btn-info">Lưu và Hiển Thị</button>
 											<button *ngIf="id != null" type="button" style="margin-top:7px; margin-left:30px" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 												aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -77,4 +77,5 @@
 								</div>
 
 	</form>
-</div>
+</div> 
+  

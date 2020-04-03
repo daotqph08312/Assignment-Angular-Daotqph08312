@@ -4,6 +4,7 @@ import {Class } from "../class";
 import {ClassService} from "../class.service";
 import {SchollService} from "../scholl.service";
 import { School } from '../school';
+import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-class-form',
   templateUrl: './class-form.component.html',
@@ -11,6 +12,16 @@ import { School } from '../school';
 })
 export class ClassFormComponent implements OnInit {
    school = new School();
+   newclass = new FormGroup({
+     idClass: new FormControl(null),
+     idSchool: new FormControl(null),
+     name: new FormControl(''),
+     roomNumber: new FormControl(''),
+     totalStudent: new FormControl(''),
+     mainTeacher: new FormControl('')
+
+   })
+  idSchools = new FormControl();
   constructor( 
     private classService:ClassService,
     private schoolService : SchollService,
@@ -22,7 +33,7 @@ export class ClassFormComponent implements OnInit {
     this.activate.paramMap.subscribe(data =>{
       this.schoolService.getListSchools().subscribe(data=>{
                   this.school = data;
-                  console.log(data);
+                  console.log(this.school);
       });
 
     });
