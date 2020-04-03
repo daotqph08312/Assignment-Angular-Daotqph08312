@@ -5,6 +5,8 @@ import {ClassService} from "../class.service";
 import {SchollService} from "../scholl.service";
 import { School } from '../school';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-class-form',
   templateUrl: './class-form.component.html',
@@ -14,14 +16,15 @@ export class ClassFormComponent implements OnInit {
    school = new School();
    newclass = new FormGroup({
      idClass: new FormControl(null),
-     idSchool: new FormControl(null),
+     idschool: new FormControl(this.school.id),
      name: new FormControl(''),
      roomNumber: new FormControl(''),
      totalStudent: new FormControl(''),
-     mainTeacher: new FormControl('')
+     mainTeacher: new FormControl(''),
+    
 
    })
-  idSchools = new FormControl();
+
   constructor( 
     private classService:ClassService,
     private schoolService : SchollService,
@@ -39,6 +42,6 @@ export class ClassFormComponent implements OnInit {
     });
   }
   SaveClass(){
-  
+  console.log(this.newclass.value);
   }
 }
