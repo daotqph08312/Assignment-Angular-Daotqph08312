@@ -37,7 +37,7 @@
   <div  class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Mã trường</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01">
+  <select formControlName='idschool' class="custom-select" id="inputGroupSelect01">
     <option >--Chọn--- </option>
     <option *ngFor= 'let school of school'  [ngValue]='school.id' checked='true' >{{school.name}} </option>
    
