@@ -37,7 +37,7 @@
   <div  class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Mã trường</label>
   </div>
-  <select formControlName='idschool' class="custom-select" id="inputGroupSelect01">
+  <select formControlName='schoolId' class="custom-select" id="inputGroupSelect01">
     <option >--Chọn--- </option>
     <option *ngFor= 'let school of school'  [ngValue]='school.id' checked='true' >{{school.name}} </option>
    
@@ -47,7 +47,7 @@
 											<br>
 
 											<button (click) = 'SaveClass()' style="margin-top:7px"   class="btn btn-info">Lưu và Hiển Thị</button>
-											<button *ngIf="id != null" type="button" style="margin-top:7px; margin-left:30px" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
+											<button *ngIf="idClass != null" type="button" style="margin-top:7px; margin-left:30px" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Xóa</button>
 											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 												aria-labelledby="exampleModalLabel" aria-hidden="true">
 												<div class="modal-dialog" role="document">
@@ -63,14 +63,14 @@
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-															<button type="button" (click)="RemoveSchool(id)" data-dismiss="modal" class="btn btn-danger">Xóa</button>
+															<button type="button" (click)="DeleteClass()" data-dismiss="modal" class="btn btn-danger">Xóa</button>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div *ngIf="this.image != null" class="col-sm-5 col-md-3">
+									<div *ngIf='this.image != null' class="col-sm-5 col-md-3">
 										<img style="margin-top:30px; margin-left:20px" class="img-fluid" [src]="this.image">
                    </div>
 									</div>

@@ -30,7 +30,8 @@ const layout = [
       {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
       {path: 'index', component:IndexComponent}, 
       {path: 'class/:id', component: ClassComponentComponent},
-      {path: 'addClass', component:  ClassFormComponent}
+      {path: 'addClass', component:  ClassFormComponent},
+      {path: 'editClass/:idschool/:idclass', component:  ClassFormComponent}
   ]
   },
   {path: '', component:LoginComponent}

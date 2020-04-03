@@ -11,8 +11,20 @@ export class ClassService {
      let url = `${classAPI}/${id}/Classes`;
      return this.http.get<Class>(url);
    }
-   addClass(idSchool,classes): Observable<Class>{
-     let url = `${classAPI}/${idSchool}/Classes`;
-     return this.http.post<Class>(url,classes);
+   addClass(object): Observable<Class>{
+     let url = `${classAPI}/${object.schoolId}/Classes`;
+     return this.http.post<Class>(url,object);
+   }
+   updateClass(object,id): Observable<Class>{
+      let url = `${classAPI}/${object.schoolId}/Classes/${id}`;
+     return this.http.put<Class>(url,object);
+   }
+   getClassByID(idSchool,idclass): Observable<Class>{
+  let url = `${classAPI}/${idSchool}/Classes/${idclass}`;
+  return this.http.get<Class>(url);
+   }
+     Delete(idSchool,idclass): Observable<Class>{
+  let url = `${classAPI}/${idSchool}/Classes/${idclass}`;
+  return this.http.delete<Class>(url);
    }
 }

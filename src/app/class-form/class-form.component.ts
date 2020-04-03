@@ -15,8 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class ClassFormComponent implements OnInit {
    school = new School();
    newclass = new FormGroup({
-     idClass: new FormControl(null),
-     idschool: new FormControl(this.school.id),
+     id: new FormControl(null),
+     schoolId: new FormControl(this.school.id),
      name: new FormControl(''),
      roomNumber: new FormControl(''),
      totalStudent: new FormControl(''),
@@ -24,24 +24,47 @@ export class ClassFormComponent implements OnInit {
     
 
    })
-
+  image:String =null;
+  idClass: Number = 0;
+  idSchool: Number = 0;
   constructor( 
     private classService:ClassService,
     private schoolService : SchollService,
     private route: Router,
     private activate: ActivatedRoute
   ) { }
-
   ngOnInit() {
-    this.activate.paramMap.subscribe(data =>{
+    
       this.schoolService.getListSchools().subscribe(data=>{
                   this.school = data;
-                  console.log(this.school);
+                   this.image = data.logo;
       });
-
+this.activate.paramMap.subscribe(data =>{
+      this.idClass = parseInt(data.get('idclass'));
+      this.idSchool = parseInt(data.get('idschool'));
+      this.classService.getClassByID(this.idSchool,this.idClass).subscribe(data=>{
+        this.newclass.setValue(data);
+      });
     });
   }
   SaveClass(){
-  console.log(this.newclass.value);
+    if(this.newclass.value.id != null){
+        this.classService.updateClass(this.newclass.value,this.idClass).subscribe (data=>{
+            this.route.navigate(['home/class/'+this.idClass]);
+        });
+    }else{
+    this.classService.addClass(this.newclass.value).subscribe(data =>{
+        this.route.navigate(['home/dashboard']);
+    });
+ 
+    }
+
+  }
+  DeleteClass(){
+    if(this.idClass != 0 ){
+      this.classService.Delete(this.idSchool,this.idClass).subscribe(data=>{
+          this.route.navigate(['home/class/'+this.idSchool]);
+      });
+    }
   }
 }
