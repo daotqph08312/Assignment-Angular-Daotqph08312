@@ -56,7 +56,7 @@ this.activate.paramMap.subscribe(data =>{
   SaveClass(){
     if(this.newclass.value.id != null){
         this.classService.updateClass(this.newclass.value,this.idClass).subscribe (data=>{
-            this.route.navigate(['home/class/'+this.idClass]);
+            this.route.navigate(['home/class/'+this.newclass.value.schoolId]);
         });
     }else{
     this.classService.addClass(this.newclass.value).subscribe(data =>{
