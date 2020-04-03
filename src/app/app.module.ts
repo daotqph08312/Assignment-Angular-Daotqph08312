@@ -28,6 +28,7 @@ const layout = [
       {path: 'addSchool', component:SchoolFormComponent}, 
       {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
       {path: 'index', component:IndexComponent}, 
+      {path: 'class/:id', component: ClassComponentComponent}
   ]
   },
   {path: '', component:LoginComponent}
