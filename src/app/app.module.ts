@@ -20,6 +20,7 @@ import {ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UserService } from './user.service';
+import { ClassFormComponent } from './class-form/class-form.component';
 const layout = [
   {path: 'home', component:DashboardComponent
   , children: [
@@ -28,7 +29,8 @@ const layout = [
       {path: 'addSchool', component:SchoolFormComponent}, 
       {path: 'deleteSchool/:id', component:SchoolComponentComponent}, 
       {path: 'index', component:IndexComponent}, 
-      {path: 'class/:id', component: ClassComponentComponent}
+      {path: 'class/:id', component: ClassComponentComponent},
+      {path: 'addClass', component:  ClassFormComponent}
   ]
   },
   {path: '', component:LoginComponent}
@@ -39,7 +41,7 @@ const layout = [
    RouterModule.forRoot(layout)
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent,  ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService, UserService]
 })

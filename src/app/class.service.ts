@@ -11,4 +11,8 @@ export class ClassService {
      let url = `${classAPI}/${id}/Classes`;
      return this.http.get<Class>(url);
    }
+   addClass(idSchool,classes): Observable<Class>{
+     let url = `${classAPI}/${idSchool}/Classes`;
+     return this.http.post<Class>(url,classes);
+   }
 }
