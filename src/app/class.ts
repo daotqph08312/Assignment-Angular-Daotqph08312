@@ -4,5 +4,5 @@ export class Class {
   roomNumber: number;
   totalStudent: number;
   schoolId:number;
-  main_teacher:String;
+  mainTeacher:String;
 }

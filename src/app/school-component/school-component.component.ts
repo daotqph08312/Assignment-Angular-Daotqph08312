@@ -8,7 +8,7 @@ import {Router,ActivatedRoute} from "@angular/router"
   styleUrls: ['./school-component.component.css']
 })
 export class SchoolComponentComponent implements OnInit {
-  school: Array<School> = [];
+  school = new School();
   constructor( private schoolService : SchollService,
                 private route: Router,
                 private activateRoute: ActivatedRoute

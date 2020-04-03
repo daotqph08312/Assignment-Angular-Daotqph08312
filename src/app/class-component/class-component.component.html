@@ -1,1 +1,45 @@
-aaa
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<h1 class="h3 mb-0 text-gray-800">Chi tiết Trường Học</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="./">Trang chủ</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page">Lớp Học</li>
+
+	</ol>
+</div>
+<div class="row col-12">
+	<div class="card shadow-sm mb-12">
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary">Thông tin trường học</h6>
+			<li> <a routerLink="../addSchool" class="btn btn-info">Thêm Trường Học</a></li>
+		</div>
+		<div class="table-responsive ">
+  <table class="table">
+ <thead>
+       <tr>
+      <th scope="col">Tên lớp học</th>
+      <th scope="col">Phòng</th>
+      <th scope="col">Tổng Sinh Viên</th>
+      <th scope="col">Mã trường</th>
+       <th scope="col">GV Chủ nhiệm</th>
+       <th scope="col"></th>
+    </tr>
+ </thead>
+ <tbody>
+ <tr *ngFor="let class of classes">
+      <th scope="row">{{class.name}}</th>
+      <td>{{class.roomNumber}}</td>
+      <td>{{class.totalStudent}}</td>
+      <td>{{nameSchool}}</td>
+      <td>{{class.mainTeacher}}</td>
+      <td> <a  class="btn btn-warning link">Sửa</a></td>			
+    </tr>
+ 
+ 
+ </tbody>
+  </table>
+</div>
+	</div>
+</div>  
+ 
