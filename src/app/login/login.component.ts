@@ -11,8 +11,8 @@ import {User} from '../user';
 })
 export class LoginComponent implements OnInit {
       loginForm: FormGroup;
-      submited: false;
- 
+    submitted = false;
+    message: String;
  
 
   constructor(
@@ -26,29 +26,30 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuider.group({
         username: ['', Validators.required],
         password:['',Validators.required],
-        acceptTerms: [false,Validators.requiredTrue]
+        acceptTerms: [true,Validators.requiredTrue]
     });
 
   }
-  regiserToField(){ return this.loginForm.controls}
+   get f() { return this.loginForm.controls; }
   login(){
-     
-     if(!this.loginForm.invalid){
-       console.log(this.loginForm.value.username);
-       return true;
+    this.submitted = true ;
+     if(this.loginForm.invalid){
+       return ;
      }
-//      else{
-//  this.UserService.login(this.loginForm.value).subscribe(data =>{
-//             if(this.loginForm.value.username == data.username && this.loginForm.value.password == data.password){
-//               console.log('success');
-//               this.route.navigate(['home/index']);
-//             }else{
-//               // this.message = 'Tài Khoản Hoặc Mật Khẩu không đúng';
-//                this.route.navigate(['']);
+ console.log(this.loginForm.value.username);
+  console.log(this.loginForm.value.password);
+ this.UserService.login(this.loginForm.value.username).subscribe(data =>{
+            if(this.loginForm.value.username == data.username && this.loginForm.value.password == data.password){
+              console.log('success');
+              this.route.navigate(['home/index']);
+            }else{
+              this.message = 'Tài Khoản Hoặc Mật Khẩu không đúng';
+               this.route.navigate(['']);
                
-//             }
-//       });
-//      }
+            }
+      });
+     
+ 
      
       
   }

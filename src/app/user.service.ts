@@ -7,8 +7,8 @@ import {User} from './user'
 export class UserService {
 
   constructor( private http : HttpClient) { }
-  login(Username): Observable<User>{
+  login(Username,password): Observable<User>{
     let url = `${UserAPI}/${Username}`;
-    return this.http.get<User>(url, Username);
+    return this.http.get<User>(url);
   }
 }
