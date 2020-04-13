@@ -3,12 +3,14 @@ import {Router,ActivatedRoute} from "@angular/router"
 import { FormControl,FormGroup } from "@angular/forms";
 import {School} from '../school';
 import {SchollService} from '../scholl.service';
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-school-form',
   templateUrl: './school-form.component.html',
   styleUrls: ['./school-form.component.css']
 })
 export class SchoolFormComponent implements OnInit {
+   submitted = false;
   newSchool = new FormGroup({
     id: new FormControl(null),
     name: new FormControl(''),
@@ -22,7 +24,8 @@ export class SchoolFormComponent implements OnInit {
   image:String = null;
   constructor( private route: Router,
                 private activate : ActivatedRoute,
-                private schoolService: SchollService
+                private schoolService: SchollService,
+                private formBuider:FormBuilder
                 ) { }
 
   ngOnInit() {
@@ -36,10 +39,22 @@ export class SchoolFormComponent implements OnInit {
           })
         }
     });
-
+    this.newSchool = this.formBuider.group({
+      name:['',Validators.required],
+      logo:['',Validators.required],
+      address: ['', Validators.required],
+      president: ['', Validators.required],
+      province: ['',Validators.required],
+      acceptTerms:[ true, Validators.requiredTrue]
+    })
   }
+    get f() { return this.newSchool.controls; }
   SaveSchool(){
-    if(this.newSchool.value.id != null){
+    this.submitted = true;
+    if(this.newSchool.invalid){
+      return ;
+    }else{
+   if(this.newSchool.value.id != null){
       this.schoolService.updateSchool(this.newSchool.value).subscribe(data =>{
       this.route.navigate(['home/dashboard']);
     });
@@ -48,6 +63,8 @@ export class SchoolFormComponent implements OnInit {
       this.route.navigate(['home/dashboard']);
     });
     }
+    }
+ 
   
   }
     RemoveSchool(){

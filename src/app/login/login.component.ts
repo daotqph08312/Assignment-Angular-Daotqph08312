@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
      if(this.loginForm.invalid){
        return ;
      }
- console.log(this.loginForm.value.username);
-  console.log(this.loginForm.value.password);
+
  this.UserService.login(this.loginForm.value.username).subscribe(data =>{
             if(this.loginForm.value.username == data.username && this.loginForm.value.password == data.password){
               console.log('success');

@@ -6,13 +6,14 @@ import {SchollService} from "../scholl.service";
 import { School } from '../school';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-class-form',
   templateUrl: './class-form.component.html',
   styleUrls: ['./class-form.component.css']
 })
 export class ClassFormComponent implements OnInit {
+  submitted = false;
    school = new School();
    newclass = new FormGroup({
      id: new FormControl(null),
@@ -31,7 +32,9 @@ export class ClassFormComponent implements OnInit {
     private classService:ClassService,
     private schoolService : SchollService,
     private route: Router,
-    private activate: ActivatedRoute
+    private activate: ActivatedRoute,
+    private formBuider: FormBuilder
+
   ) { }
   ngOnInit() {
     
@@ -52,9 +55,22 @@ this.activate.paramMap.subscribe(data =>{
                    console.log(data);
       });
     });
+    this.newclass = this.formBuider.group({
+        name: ['', Validators.required],
+        roomNumber: ['', Validators.required],
+        totalStudent: ['', Validators.required],
+        mainTeacher:['',Validators.required],
+        schoolId:['',Validators.required],
+        acceptTerms:[ true, Validators.requiredTrue]
+    });
   }
+   get f() { return this.newclass.controls; }
   SaveClass(){
-    if(this.newclass.value.id != null){
+    this.submitted = true;
+   if(this.newclass.invalid){
+     return;
+   }else{
+   if(this.newclass.value.id != null){
         this.classService.updateClass(this.newclass.value,this.idClass).subscribe (data=>{
             this.route.navigate(['home/class/'+this.newclass.value.schoolId]);
         });
@@ -64,6 +80,10 @@ this.activate.paramMap.subscribe(data =>{
     });
  
     }
+   }
+
+
+ 
 
   }
   DeleteClass(){
