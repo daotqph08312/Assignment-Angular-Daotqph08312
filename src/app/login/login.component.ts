@@ -4,12 +4,16 @@ import { FormControl,FormGroup } from "@angular/forms";
 import { FormBuilder, Validators } from '@angular/forms';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import { AuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+ user: SocialUser;
       loginForm: FormGroup;
     submitted = false;
     message:String = '';
@@ -19,16 +23,21 @@ export class LoginComponent implements OnInit {
     private route: Router,
      private activateRoute:ActivatedRoute,
      private UserService:UserService,
-     private formBuider:FormBuilder
+     private formBuider:FormBuilder,
+     private authService: AuthService
   ) {  }
 
   ngOnInit() {
+     this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(user);
+    });
     this.loginForm = this.formBuider.group({
         username: ['', Validators.required],
         password:['',Validators.required],
         acceptTerms: [true,Validators.requiredTrue]
     });
-
+  
   }
    get f() { return this.loginForm.controls; }
   login(){
@@ -47,9 +56,11 @@ export class LoginComponent implements OnInit {
                
             }
       });
-     
- 
-     
-      
   }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => console.log(x));
+  }
+
+  
 }
