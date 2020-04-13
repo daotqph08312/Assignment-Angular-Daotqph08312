@@ -53,9 +53,9 @@
     <option *ngFor= 'let s of school' [ngValue]='s.id'  >{{s.name}} </option>
  
   </select>
-
+ 
 <div *ngIf="submitted && f.schoolId.errors" class="invalid-feedback">
-                        <div *ngIf="f.schoolId.errors.required">Vui lòng chọn tên Trường Học</div>
+  <div *ngIf="f.schoolId.errors.required">Vui lòng chọn tên Trường Học</div>
                     </div>
 					</div>
 					<div class="form-group">

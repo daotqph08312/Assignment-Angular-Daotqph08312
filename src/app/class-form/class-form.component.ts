@@ -56,9 +56,13 @@ this.activate.paramMap.subscribe(data =>{
 
      
     });
+    // this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
+    //     this.school = data;
+    //     console.log(this.school);
+    // });
         this.schoolService.getListSchools().subscribe(data=>{
            this.school = data;
-           console.log(data);
+          //  console.log(data);
            console.log(this.idSchool);
       });
     
