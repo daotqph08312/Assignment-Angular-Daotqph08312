@@ -12,7 +12,7 @@ import {User} from '../user';
 export class LoginComponent implements OnInit {
       loginForm: FormGroup;
     submitted = false;
-    message: String;
+    message:String = '';
  
 
   constructor(

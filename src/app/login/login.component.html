@@ -18,7 +18,7 @@
 								<div class="login-form">
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Đăng Nhập Hệ Thống</h1>
-										<h5 style="color:red;" *ngIf='message != null'>{{message}}</h5>
+										<h6 style="color:red;" *ngIf='message != null'>{{message}}</h6>
 									</div>
 									<form class="user" [formGroup]='loginForm' (ngSubmit)='login()'>
 										<div class="form-group">
