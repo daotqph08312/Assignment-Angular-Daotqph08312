@@ -38,8 +38,10 @@ export class ClassFormComponent implements OnInit {
   ) { }
   ngOnInit() {
     
-      this.schoolService.getListSchools().subscribe(data=>{
-                  this.school = data;
+      this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
+                  // this.school = data;
+                  // // console.log("school is" + data);
+                  console.log(this.idSchool);
                   
       });
    
