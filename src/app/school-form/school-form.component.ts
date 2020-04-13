@@ -62,7 +62,7 @@ export class SchoolFormComponent implements OnInit {
     if(this.newSchool.invalid){
       return ;
     }
-    // else{
+
    if(this.newSchool.value.id != null){
       this.schoolService.updateSchool(this.newSchool.value).subscribe(data =>{
         console.log('update');
@@ -73,7 +73,7 @@ export class SchoolFormComponent implements OnInit {
       this.route.navigate(['home/dashboard']);
     });
     }
-    // }
+
  
   
   }

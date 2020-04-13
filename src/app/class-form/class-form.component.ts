@@ -47,7 +47,15 @@ this.activate.paramMap.subscribe(data =>{
       this.idClass = parseInt(data.get('idclass'));
       this.idSchool = parseInt(data.get('idschool'));
       this.classService.getClassByID(this.idSchool,this.idClass).subscribe(data=>{
-        this.newclass.setValue(data);
+        this.newclass.setValue({
+          id:this.idSchool,
+          schoolId:data.id,
+          name:data.name,
+          roomNumber: data.roomNumber,
+          totalStudent:data.totalStudent,
+          mainTeacher:data.mainTeacher,
+
+        });
       });
 
          this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
@@ -56,12 +64,13 @@ this.activate.paramMap.subscribe(data =>{
       });
     });
     this.newclass = this.formBuider.group({
+      id: [null,Validators.required],
         name: ['', Validators.required],
         roomNumber: ['', Validators.required],
         totalStudent: ['', Validators.required],
         mainTeacher:['',Validators.required],
         schoolId:['',Validators.required],
-        acceptTerms:[ true, Validators.requiredTrue]
+        // acceptTerms:[ true, Validators.requiredTrue]
     });
   }
    get f() { return this.newclass.controls; }
