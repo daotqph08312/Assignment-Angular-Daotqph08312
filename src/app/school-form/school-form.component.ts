@@ -33,7 +33,13 @@ export class SchoolFormComponent implements OnInit {
         let schoolsID = params.get('id');
         if(schoolsID != null){
           this.schoolService.getListSchoolbyId(schoolsID).subscribe(data =>{
-              this.newSchool.setValue(data);
+              this.newSchool.patchValue({
+                name:data.name,
+                logo:data.logo,
+                address: data.address,
+                president: data.president,
+                province: data.province
+              })
              this.id = schoolsID;
              this.showImage();
           })
