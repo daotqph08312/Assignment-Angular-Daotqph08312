@@ -14,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ClassFormComponent implements OnInit {
   submitted = false;
-   school = new School();
+   school= new School();
    newclass = new FormGroup({
      id: new FormControl(null),
      schoolId: new FormControl(this.school.id),
@@ -38,12 +38,6 @@ export class ClassFormComponent implements OnInit {
   ) { }
   ngOnInit() {
     
-      this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
-                  // this.school = data;
-                  // // console.log("school is" + data);
-                  console.log(this.idSchool);
-                  
-      });
    
 this.activate.paramMap.subscribe(data =>{
       this.idClass = parseInt(data.get('idclass'));
@@ -60,11 +54,15 @@ this.activate.paramMap.subscribe(data =>{
         });
       });
 
-         this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
-           this.image = data.logo;
-                   console.log(data);
-      });
+     
     });
+        this.schoolService.getListSchools().subscribe(data=>{
+           this.school = data;
+           console.log(data);
+           console.log(this.idSchool);
+      });
+    
+   
     this.newclass = this.formBuider.group({
       id: [null,Validators.required],
         name: ['', Validators.required],

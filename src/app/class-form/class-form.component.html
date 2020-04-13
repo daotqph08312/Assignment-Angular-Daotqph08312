@@ -50,8 +50,10 @@
 							<label class="input-group-text" for="inputGroupSelect01">Mã trường</label>
 						</div>
 						<select formControlName='schoolId' class="custom-select" id="inputGroupSelect01" [ngClass]="{ 'is-invalid': submitted && f.schoolId.errors }">
-    <option *ngFor= 'let school of school'[selected] = true  [ngValue]='school.id'  >{{school.name}} </option>
+    <option *ngFor= 'let s of school' [ngValue]='s.id'  >{{s.name}} </option>
+ 
   </select>
+
 <div *ngIf="submitted && f.schoolId.errors" class="invalid-feedback">
                         <div *ngIf="f.schoolId.errors.required">Vui lòng chọn tên Trường Học</div>
                     </div>
