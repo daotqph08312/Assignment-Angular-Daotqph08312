@@ -8,16 +8,18 @@ import {Router,ActivatedRoute} from "@angular/router"
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
- 
+    nameUser: String = '';
   constructor(  private authService: AuthService,
                 private route: Router) { }
 
   ngOnInit() {
+    this.nameUser = localStorage.getItem('nameUser');
+    console.log(this.nameUser);
   }
    signOut(): void {
-    //  authService : localStorage.getItem('authService');
+  
     this.authService.signOut();
     this.route.navigate(['']);
-    // console.log('logout')
+
   }
 }

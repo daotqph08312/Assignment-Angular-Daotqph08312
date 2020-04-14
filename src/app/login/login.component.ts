@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
     
      this.authService.authState.subscribe((user) => {
       this.user = user;
-      console.log(user);
+      console.log(user.name);
      
        if(this.isLoginGoole){
        this.route.navigate(['home/index'])
        }else{
           this.route.navigate([''])
        }
-      // localStorage.setItem('authService',this.authService);
+      localStorage.setItem('nameUser',user.name);
     });
     this.loginForm = this.formBuider.group({
         username: ['', Validators.required],
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
  this.UserService.login(this.loginForm.value.username).subscribe(data =>{
             if(this.loginForm.value.username == data.username && this.loginForm.value.password == data.password){
-              console.log('success');
+              localStorage.setItem('nameUser',data.name);
               this.route.navigate(['home/index']);
             }else{
               this.message = 'Tài Khoản Hoặc Mật Khẩu không đúng';
