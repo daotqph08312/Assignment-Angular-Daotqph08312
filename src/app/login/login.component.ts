@@ -28,16 +28,18 @@ export class LoginComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
+    this.signOut();
      this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log(user);
+      this.route.navigate(['home/index']);
     });
     this.loginForm = this.formBuider.group({
         username: ['', Validators.required],
         password:['',Validators.required],
         acceptTerms: [true,Validators.requiredTrue]
     });
-  
+ 
   }
    get f() { return this.loginForm.controls; }
   login(){
@@ -59,10 +61,13 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => console.log(x),
-    this.route.navigate(['home'])
+    let user = [];
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => 
+    console.log(x)
     );
   }
-
+    signOut(): void {
+    this.authService.signOut();
+  }
   
 }
