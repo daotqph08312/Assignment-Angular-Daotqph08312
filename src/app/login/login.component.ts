@@ -14,6 +14,7 @@ import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } fro
 })
 export class LoginComponent implements OnInit {
  user: SocialUser;
+ isLoginGoole :boolean = false;
       loginForm: FormGroup;
     submitted = false;
     message:String = '';
@@ -28,11 +29,17 @@ export class LoginComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this.signOut();
+    
      this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log(user);
-      this.route.navigate(['home/index']);
+     
+       if(this.isLoginGoole){
+       this.route.navigate(['home/index'])
+       }else{
+          this.route.navigate([''])
+       }
+      // localStorage.setItem('authService',this.authService);
     });
     this.loginForm = this.formBuider.group({
         username: ['', Validators.required],
@@ -65,9 +72,11 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => 
     console.log(x)
     );
+      this.isLoginGoole = true;
   }
     signOut(): void {
     this.authService.signOut();
+    
   }
   
 }
