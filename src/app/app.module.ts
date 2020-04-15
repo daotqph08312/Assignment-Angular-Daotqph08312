@@ -23,7 +23,16 @@ import { UserService } from './user.service';
 import { ClassFormComponent } from './class-form/class-form.component';
 import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+import { translocoLoader } from './transloco.loader';
+import { TranslocoModule, TRANSLOCO_CONFIG, TranslocoConfig } from '@ngneat/transloco';
 
+// import your locales
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeGb from '@angular/common/locales/en-GB';
+
+registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeGb, 'en-GB');
 const config = new AuthServiceConfig([
    {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -50,7 +59,7 @@ export function provideConfig() {
   return config;
 }
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
+  imports:      [ BrowserModule, FormsModule ,HttpClientModule,TranslocoModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
    RouterModule.forRoot(layout)
   ],
   
@@ -60,6 +69,16 @@ export function provideConfig() {
   {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    }]
+    },
+    {
+      provide: TRANSLOCO_CONFIG,
+      useValue: {
+        listenToLangChange: true,
+        defaultLang: 'en',
+        fallbackLang: 'en',
+        prodMode: false
+      } as TranslocoConfig
+    },
+    translocoLoader]
 })
 export class AppModule { }
