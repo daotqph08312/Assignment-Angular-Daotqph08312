@@ -15,6 +15,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ClassFormComponent implements OnInit {
   submitted = false;
    school= new School();
+   
    newclass = new FormGroup({
      id: new FormControl(null),
      schoolId: new FormControl(this.school.id),
@@ -44,8 +45,8 @@ this.activate.paramMap.subscribe(data =>{
       this.idSchool = parseInt(data.get('idschool'));
       this.classService.getClassByID(this.idSchool,this.idClass).subscribe(data=>{
         this.newclass.setValue({
-          id:this.idSchool,
-          schoolId:data.id,
+          id:data.id,
+          schoolId:this.idSchool,
           name:data.name,
           roomNumber: data.roomNumber,
           totalStudent:data.totalStudent,
@@ -53,7 +54,7 @@ this.activate.paramMap.subscribe(data =>{
 
         });
       });
-
+    console.log(this.newclass.value.schoolId)
      
     });
     // this.schoolService.getListSchoolbyId(this.idSchool).subscribe(data=>{
