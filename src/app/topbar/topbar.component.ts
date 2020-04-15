@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'angularx-social-login';
 import {Router,ActivatedRoute} from "@angular/router"
-
+import { TranslocoService } from '@ngneat/transloco';
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',

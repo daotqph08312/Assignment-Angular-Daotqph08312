@@ -70,6 +70,16 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
+    {
+      provide: TRANSLOCO_CONFIG,
+      useValue: {
+        listenToLangChange: true,
+        defaultLang: 'vi',
+        fallbackLang: 'vi',
+        prodMode: false
+      } as TranslocoConfig
+    },
+    translocoLoader
    ]
 })
 export class AppModule { }
