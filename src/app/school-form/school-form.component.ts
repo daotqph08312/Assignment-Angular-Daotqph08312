@@ -47,7 +47,7 @@ export class SchoolFormComponent implements OnInit {
         }
     });
     this.newSchool = this.formBuider.group({
-      id: [null,Validators.required],
+      id: [null],
       name:['',Validators.required],
       logo:['',Validators.required],
       address: ['', Validators.required],

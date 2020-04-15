@@ -68,7 +68,7 @@ this.activate.paramMap.subscribe(data =>{
     
    
     this.newclass = this.formBuider.group({
-      id: [null,Validators.required],
+      id: [null],
         name: ['', Validators.required],
         roomNumber: ['', Validators.required],
         totalStudent: ['', Validators.required],
@@ -89,7 +89,7 @@ this.activate.paramMap.subscribe(data =>{
         });
     }else{
     this.classService.addClass(this.newclass.value).subscribe(data =>{
-        this.route.navigate(['home/dashboard']);
+       this.route.navigate(['home/class/'+this.newclass.value.schoolId]);
     });
  
     }
