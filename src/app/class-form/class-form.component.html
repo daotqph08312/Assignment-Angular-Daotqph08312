@@ -49,7 +49,7 @@
 						<div class="input-group-prepend">
 							<label class="input-group-text" for="inputGroupSelect01">Mã trường</label>
 						</div>
-            {{newclass.value  | json}}
+           
 						<select  formControlName='schoolId' class="custom-select" id="inputGroupSelect01" [ngClass]="{ 'is-invalid': submitted && f.schoolId.errors }">
     <option *ngFor= 'let s of school' [value]='s.id'  >{{s.name}} </option>
  
