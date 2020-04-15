@@ -21,6 +21,15 @@ import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UserService } from './user.service';
 import { ClassFormComponent } from './class-form/class-form.component';
+import { SocialLoginModule } from 'angularx-social-login';
+import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+
+const config = new AuthServiceConfig([
+   {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('1045280647911-nh3smq3e2lilcs4aeccn8ojrctbggo41.apps.googleusercontent.com')
+  },
+]);
 const layout = [
   {path: 'home', component:DashboardComponent
   , children: [
@@ -37,13 +46,20 @@ const layout = [
   {path: '', component:LoginComponent}
   
 ]
+export function provideConfig() {
+  return config;
+}
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,ReactiveFormsModule,
+  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
    RouterModule.forRoot(layout)
   ],
   
   declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],
   bootstrap:    [ AppComponent ],
-  providers: [SchollService, ClassService, UserService]
+  providers: [SchollService, ClassService, UserService,
+  {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }]
 })
 export class AppModule { }
