@@ -26,6 +26,18 @@ import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedIn
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import {  HttpClient } from '@angular/common/http';
+
+// transloco
+import { translocoLoader } from './transloco.loader';
+import { TranslocoModule, TRANSLOCO_CONFIG, TranslocoConfig } from '@ngneat/transloco';
+
+// import your locales
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeGb from '@angular/common/locales/en-GB';
+
+registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeGb, 'en-GB');
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -56,22 +68,25 @@ export function provideConfig() {
 }
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
-   RouterModule.forRoot(layout),
-     TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: translateHttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+   RouterModule.forRoot(layout)
   ],
   
-  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],
+  declarations: [ AppComponent, HelloComponent,  ClassComponentComponent,TranslocoModule, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],
   bootstrap:    [ AppComponent ],
   providers: [SchollService, ClassService, UserService,
   {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    }]
+    },
+    {
+      provide: TRANSLOCO_CONFIG,
+      useValue: {
+        listenToLangChange: true,
+        defaultLang: 'en',
+        fallbackLang: 'en',
+        prodMode: false
+      } as TranslocoConfig
+    },
+    translocoLoader]
 })
 export class AppModule { }
