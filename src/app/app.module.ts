@@ -25,6 +25,9 @@ import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 
 import {  HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+
 
 const config = new AuthServiceConfig([
    {
@@ -51,9 +54,20 @@ const layout = [
 export function provideConfig() {
   return config;
 }
+export function translateHttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
-   RouterModule.forRoot(layout)
+  imports:      [ BrowserModule, FormsModule ,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
+   RouterModule.forRoot(layout),
+    HttpClientModule,
+  TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateHttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   
   declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],

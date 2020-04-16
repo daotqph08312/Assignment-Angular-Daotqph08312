@@ -1,3 +1,18 @@
   
         <router-outlet></router-outlet>
- 
+ <hello name="{{ name }}"></hello>
+<h1 translate>Title</h1>
+
+<div translate>WelcomeMessage</div>
+
+<div style="text-align:center">
+  <h1 translate>Title</h1>
+
+  <h6 translate>WelcomeMessage</h6>
+
+  <button (click)="switchLanguage('en')">English</button>
+
+  <button (click)="switchLanguage('cn')">China</button>
+   <button (click)="switchLanguage('vn')">viet Name</button>
+</div>
+<h1> <a href="https://tienanhvn.blogspot.com/2019/05/how-to-multi-language-in-angular.html">How to multi language in angular using ngx-translate</a> </h1>
