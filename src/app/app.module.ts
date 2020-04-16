@@ -22,14 +22,14 @@ import { IndexComponent } from './index/index.component';
 import { UserService } from './user.service';
 import { ClassFormComponent } from './class-form/class-form.component';
 import { SocialLoginModule } from 'angularx-social-login';
-import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 import { TranslateModule } from '@ngx-translate/core';
 import {  HttpClient } from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+return new TranslateHttpLoader(http);
 }
 const config = new AuthServiceConfig([
    {
