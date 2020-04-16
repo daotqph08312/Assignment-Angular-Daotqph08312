@@ -28,8 +28,8 @@ import {  HttpClient } from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-export function translateHttpLoaderFactory(http: HttpClient) {
-return new TranslateHttpLoader(http);
+export function httpLoaderFactory(http: HttpClient) {
+return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 const config = new AuthServiceConfig([
    {
@@ -62,7 +62,7 @@ export function provideConfig() {
    TranslateModule.forRoot({
      loader: {
        provide: TranslateLoader,
-       useFactory:translateHttpLoaderFactory,
+       useFactory:httpLoaderFactory,
        deps:[HttpClient]
      }
    })
