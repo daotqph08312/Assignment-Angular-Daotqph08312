@@ -23,14 +23,9 @@ import { UserService } from './user.service';
 import { ClassFormComponent } from './class-form/class-form.component';
 import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
-import { TranslateModule } from '@ngx-translate/core';
-import {  HttpClient } from '@angular/common/http';
-import {TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-export function httpLoaderFactory(http: HttpClient) {
-return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
-}
+import {  HttpClient } from '@angular/common/http';
+
 const config = new AuthServiceConfig([
    {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -58,14 +53,7 @@ export function provideConfig() {
 }
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,HttpClientModule,FontAwesomeModule,SocialLoginModule,ReactiveFormsModule,
-   RouterModule.forRoot(layout),
-   TranslateModule.forRoot({
-     loader: {
-       provide: TranslateLoader,
-       useFactory:httpLoaderFactory,
-       deps:[HttpClient]
-     }
-   })
+   RouterModule.forRoot(layout)
   ],
   
   declarations: [ AppComponent, HelloComponent,  ClassComponentComponent, SchoolComponentComponent, DashboardComponent, SchoolFormComponent, HeaderComponent, FooterComponent, TopbarComponent, LoginComponent, IndexComponent, ClassFormComponent,  ],
